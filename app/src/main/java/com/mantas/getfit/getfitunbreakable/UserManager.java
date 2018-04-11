@@ -40,4 +40,18 @@ public class UserManager {
                     }
                 });
     }
+
+    public static  void updateUserProfilePicture(Uri photoUri, FirebaseUser user){
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setPhotoUri(photoUri).build();
+
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("UPDATE", "User profile updated.");
+                        }
+                    }
+                });
+    }
 }

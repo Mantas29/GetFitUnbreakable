@@ -1,6 +1,7 @@
 package com.mantas.getfit.getfitunbreakable;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -22,22 +23,45 @@ import java.util.UUID;
 
 public class StorageManager {
 
-    public void storeFile(){
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
+    public StorageManager(){
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
     }
 
-    public static void uploadImage(InputStream filePath){
+    public void uploadImage(Context context, Uri filePath, String firebasePath) {
 
-        FirebaseStorage storage;
-        StorageReference storageReference;
+        if(filePath != null)
+        {
+            final ProgressDialog progressDialog = new ProgressDialog(context);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
 
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference("image.png");
-
-            if(filePath != null)
-            {
-                storageReference.putStream(filePath);
-            }
+            StorageReference ref = storageReference.child(firebasePath);//+ UUID.randomUUID().toString());
+            ref.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
         }
     }
+}
 

@@ -1,11 +1,13 @@
 package com.mantas.getfit.getfitunbreakable;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,16 +21,24 @@ import java.net.URL;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private TextView userNameLabel;
+    private TextView userEmailLabel;
+    private ImageView profilePicture;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        userNameLabel = (TextView) findViewById(R.id.user_name_label);
+        userEmailLabel = (TextView) findViewById(R.id.user_email_label);
+        profilePicture = findViewById(R.id.user_profile_picture);
+        populateData();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        populateData();
+
     }
 
     public void signOut(View view){
@@ -49,49 +59,25 @@ public class ProfileActivity extends AppCompatActivity {
         String email = currentUser.getEmail();
         String photoUri = currentUser.getPhotoUrl().toString();
 
-        TextView userNameLabel = (TextView) findViewById(R.id.user_name_label);
-        TextView userEmail = (TextView) findViewById(R.id.user_email_label);
-        ImageView profilePicture = findViewById(R.id.user_profile_picture);
-
         userNameLabel.setText(displayName);
-        userEmail.setText(email);
+        userEmailLabel.setText(email);
         new DownLoadImageTask(profilePicture).execute(photoUri);
     }
 
-    private class DownLoadImageTask extends AsyncTask<String,Void,Bitmap> {
-        ImageView imageView;
+    public void navigateToSettingsActivity(View view){
+        Intent settingsActivityIntent = new Intent(this, SettingsActivity.class);
 
-        public DownLoadImageTask(ImageView imageView){
-            this.imageView = imageView;
-        }
 
-        /*
-            doInBackground(Params... params)
-                Override this method to perform a computation on a background thread.
-         */
-        protected Bitmap doInBackground(String...urls){
-            String urlOfImage = urls[0];
-            Bitmap logo = null;
-            try{
-                InputStream is = new URL(urlOfImage).openStream();
-                /*
-                    decodeStream(InputStream is)
-                        Decode an input stream into a bitmap.
-                 */
-                logo = BitmapFactory.decodeStream(is);
-            }catch(Exception e){ // Catch the download exception
-                e.printStackTrace();
-            }
-            return logo;
-        }
+        Pair[] pairs = new Pair[3];
+        pairs[0] = new Pair<View, String>(userNameLabel, "user_name_transition");
+        pairs[1] = new Pair<View, String>(userEmailLabel, "user_email_transition");
+        pairs[2] = new Pair<View, String>(profilePicture, "user_profile_picture_transition");
 
-        /*
-            onPostExecute(Result result)
-                Runs on the UI thread after doInBackground(Params...).
-         */
-        protected void onPostExecute(Bitmap result){
-            imageView.setImageBitmap(result);
-        }
+        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this, pairs);
+
+        startActivity(settingsActivityIntent, activityOptions.toBundle());
     }
+
+
 
 }

@@ -18,6 +18,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/user_profile_picture"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:onClick="navigateToSettingsActivity"
+        android:src="@drawable/ic_user"
+        android:transitionName="user_profile_picture_transition"
+        app:civ_border_color="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_title_label" />
+
     <TextView
         android:id="@+id/user_name_label"
         android:layout_width="wrap_content"
@@ -30,6 +43,7 @@
         android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        android:transitionName="user_name_transition"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/user_profile_picture"
@@ -44,6 +58,7 @@
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textStyle="italic"
+        android:transitionName="user_email_transition"
         app:layout_constraintStart_toStartOf="@+id/user_name_label"
         app:layout_constraintTop_toBottomOf="@+id/user_name_label" />
 
@@ -51,6 +66,7 @@
         android:id="@+id/setting_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:onClick="navigateToSettingsActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_settings_applications_black_24dp" />
@@ -201,17 +217,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/user_profile_picture"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_user"
-        app:civ_border_color="#FFFFFF"
-        app:civ_border_width="1dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_title_label" />
 
 
 </android.support.constraint.ConstraintLayout>
