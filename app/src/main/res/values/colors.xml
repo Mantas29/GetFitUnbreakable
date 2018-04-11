@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="unbreakable_blue">#5bc0eb</color>
+    <color name="unbreakable_yellow">#FDE74C</color>
+    <color name="unbreakable_red">#EE6352</color>
+    <color name="unbreakable_green">#59CD90</color>
+    <color name="unbreakable_orange">#fac05e</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+</resources>

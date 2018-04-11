@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "841183455259",
+    "firebase_url": "https://unbreakable-a94df.firebaseio.com",
+    "project_id": "unbreakable-a94df",
+    "storage_bucket": "unbreakable-a94df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841183455259:android:5022e9f14d919a61",
+        "android_client_info": {
+          "package_name": "com.mantas.getfit.getfitunbreakable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841183455259-hd73kmh28kv4mbtrrrnqvf6429orlgn7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mantas.getfit.getfitunbreakable",
+            "certificate_hash": "e6eec884f4a4cd21e011f3dd7b74c5c5787508f0"
+          }
+        },
+        {
+          "client_id": "841183455259-oe2hh25diva80jds4egb78bu7dt7h0tk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7pxWQliMx6RBNRjAiyw5nK6fjEHutH64"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841183455259-oe2hh25diva80jds4egb78bu7dt7h0tk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

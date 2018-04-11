@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_blue_green"
+    tools:context="com.mantas.getfit.getfitunbreakable.ProfileActivity">
+
+    <TextView
+        android:id="@+id/profile_title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="PROFILE"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/user_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="name surname"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/user_profile_picture"
+        app:layout_constraintTop_toTopOf="@+id/user_profile_picture" />
+
+    <TextView
+        android:id="@+id/user_email_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name.surname@email.com"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/user_name_label"
+        app:layout_constraintTop_toBottomOf="@+id/user_name_label" />
+
+    <ImageView
+        android:id="@+id/setting_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_settings_applications_black_24dp" />
+
+    <TextView
+        android:id="@+id/statistics_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="STATISTICS"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_profile_picture" />
+
+    <TextView
+        android:id="@+id/latest_record_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Latest\n record"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/record_container"
+        app:layout_constraintStart_toStartOf="@+id/record_container"
+        app:layout_constraintTop_toTopOf="@+id/record_container" />
+
+    <TextView
+        android:id="@+id/workouts_completed_label"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Workouts\n completed"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/workouts_container"
+        app:layout_constraintStart_toStartOf="@+id/workouts_container"
+        app:layout_constraintTop_toTopOf="@+id/workouts_container" />
+
+    <TextView
+        android:id="@+id/latest_record_name_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Bench press"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/record_container"
+        app:layout_constraintStart_toStartOf="@+id/record_container"
+        app:layout_constraintTop_toBottomOf="@+id/record_weight_label" />
+
+    <TextView
+        android:id="@+id/workout_number_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="5"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/workouts_container"
+        app:layout_constraintStart_toStartOf="@+id/workouts_container"
+        app:layout_constraintTop_toBottomOf="@+id/workouts_completed_label" />
+
+    <TextView
+        android:id="@+id/record_weight_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="100kg"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/record_container"
+        app:layout_constraintStart_toStartOf="@+id/record_container"
+        app:layout_constraintTop_toBottomOf="@+id/latest_record_label" />
+
+    <TextView
+        android:id="@+id/record_date_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="2018-01-01"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/record_container"
+        app:layout_constraintStart_toStartOf="@+id/record_container"
+        app:layout_constraintTop_toBottomOf="@+id/latest_record_name_label" />
+
+    <ImageView
+        android:id="@+id/record_container"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginBottom="200dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/workouts_container"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statistics_label"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/rectangle" />
+
+    <ImageView
+        android:id="@+id/workouts_container"
+        android:layout_width="169dp"
+        android:layout_height="170dp"
+        android:layout_marginBottom="200dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/record_container"
+        app:layout_constraintTop_toBottomOf="@+id/statistics_label"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/rectangle" />
+
+    <Button
+        android:id="@+id/Signout_button"
+        style="@android:style/Widget.Material.Light.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="signOut"
+        android:text="SIGN OUT"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/user_profile_picture"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_user"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_title_label" />
+
+
+</android.support.constraint.ConstraintLayout>
