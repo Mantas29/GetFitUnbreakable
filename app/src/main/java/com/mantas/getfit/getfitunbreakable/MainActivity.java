@@ -20,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void LaunchRecordsActivity(View view){
+        Intent recordsActivityIntent = new Intent(this, RecordsActivity.class);
+        startActivity(recordsActivityIntent);
+    }
+
     public void LaunchProfileActivity(View view){
         Intent profileActivityIntent = new Intent(this, ProfileActivity.class);
         startActivity(profileActivityIntent);

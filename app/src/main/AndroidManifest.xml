@@ -48,7 +48,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestActivity" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".RecordsActivity"></activity>
     </application>
 
 </manifest>
