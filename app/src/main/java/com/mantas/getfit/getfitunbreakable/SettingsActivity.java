@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,30 +54,36 @@ public class SettingsActivity extends AppCompatActivity {
         profilePicture = findViewById(R.id.user_profile_picture);
         userName = findViewById(R.id.user_name_label);
         userEmail = findViewById(R.id.user_email_label);
-
-        populateData();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        populateData();
     }
 
     private void populateData(){
         String displayName = currentUser.getDisplayName();
         String email = currentUser.getEmail();
-        String photoUri = currentUser.getPhotoUrl().toString();
+        final String photoUri = currentUser.getPhotoUrl().toString();
 
         userName.setText(displayName);
         userEmail.setText(email);
-        new DownLoadImageTask(profilePicture).execute(photoUri);
+
+        storageReference.child("profilePictures/" + currentUser.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profilePicture);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                new DownLoadImageTask(profilePicture).execute(photoUri);
+            }
+        });
     }
 
-    public void changePicture(View view){
-        chooseImage();
-    }
-
-    private void chooseImage() {
+    public void chooseImage(View view) {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -93,6 +100,7 @@ public class SettingsActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 profilePicture.setImageBitmap(bitmap);
+                uploadImage();
             }
             catch (IOException e)
             {
@@ -101,13 +109,11 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    public void onClick(View view){
+    public void uploadImage(){
         StorageManager storageManager = new StorageManager();
         storageManager.uploadImage(this, filePath, "profilePictures/" + currentUser.getUid());
 
-        System.out.println("IMAGE URI IS:::::::::::::::::::::::::::::::::" + storageReference.child("IMG_0073.jpg").getDownloadUrl());
-
-        storageReference.child("IMG_0073.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageReference.child("profilePictures/" + currentUser.getUid()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(profilePicture);
@@ -115,8 +121,18 @@ public class SettingsActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
             }
         });
+    }
+
+    public void signOut(View view){
+        FirebaseAuth.getInstance().signOut();
+        //Logging out from facebook
+        LoginManager.getInstance().logOut();
+        //restarting application
+        Intent i = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 }

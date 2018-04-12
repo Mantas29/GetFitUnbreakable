@@ -26,8 +26,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="80dp"
-        android:onClick="changePicture"
-        android:src="@drawable/ic_user"
+        android:onClick="chooseImage"
         android:transitionName="user_profile_picture_transition"
         app:civ_border_color="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,17 +82,19 @@
         app:layout_constraintTop_toBottomOf="@+id/user_name_label" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signout_button"
+        style="@android:style/Widget.Material.Light.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="136dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="61dp"
-        android:elevation="0dp"
-        android:onClick="onClick"
-        android:text="Upload"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="signOut"
+        android:text="SIGN OUT"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

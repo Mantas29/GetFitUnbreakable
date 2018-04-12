@@ -25,7 +25,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:onClick="navigateToSettingsActivity"
-        android:src="@drawable/ic_user"
         android:transitionName="user_profile_picture_transition"
         app:civ_border_color="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
@@ -200,23 +199,6 @@
         app:layout_constraintTop_toBottomOf="@+id/statistics_label"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/rectangle" />
-
-    <Button
-        android:id="@+id/Signout_button"
-        style="@android:style/Widget.Material.Light.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:onClick="signOut"
-        android:text="SIGN OUT"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </android.support.constraint.ConstraintLayout>

@@ -1,7 +1,9 @@
 package com.mantas.getfit.getfitunbreakable;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
@@ -28,10 +30,6 @@ class DownLoadImageTask extends AsyncTask<String,Void,Bitmap> {
         Bitmap logo = null;
         try{
             InputStream is = new URL(urlOfImage).openStream();
-                /*
-                    decodeStream(InputStream is)
-                        Decode an input stream into a bitmap.
-                 */
             logo = BitmapFactory.decodeStream(is);
         }catch(Exception e){ // Catch the download exception
             e.printStackTrace();
@@ -44,6 +42,10 @@ class DownLoadImageTask extends AsyncTask<String,Void,Bitmap> {
             Runs on the UI thread after doInBackground(Params...).
      */
     protected void onPostExecute(Bitmap result){
-        imageView.setImageBitmap(result);
+        if(result != null)
+            imageView.setImageBitmap(result);
+        else
+            imageView.setImageResource(R.drawable.ic_user);
+
     }
 }

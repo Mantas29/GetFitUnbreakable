@@ -41,7 +41,7 @@ public class UserManager {
                 });
     }
 
-    public static  void updateUserProfilePicture(Uri photoUri, FirebaseUser user){
+    public static void updateUserProfilePicture(Uri photoUri, FirebaseUser user){
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setPhotoUri(photoUri).build();
 
         user.updateProfile(profileUpdates)
